@@ -1,73 +1,64 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Road — Blog</title>
+    <title>Blue Road - Security Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- TOP NAVIGATION (GIỮ NGUYÊN) -->
     <nav>
         <div class="nav-brand">Blue Road</div>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="playground/index.html">Playground</a></li>
             <li><a href="about/index.html">About</a></li>
-            <li><a href="#" class="flag">Buy Me a Flag 🚩</a></li>
+            <li><a href="#" class="flag">Buy Me a Flag </a></li>
             <li><button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️</button></li>
         </ul>
     </nav>
 
-    <!-- LAYOUT CHÍNH (SIDEBAR + CONTENT) -->
     <div class="layout">
-        
-        <!-- SIDEBAR (GIỮ PHONG CÁCH "ON THIS PAGE") -->
+        <!-- SIDEBAR (Giữ nguyên phong cách On This Page) -->
         <aside class="sidebar">
             <div class="sidebar-section">
                 <div class="sidebar-label">ON THIS PAGE</div>
-                <!-- Đây là khu vực bạn muốn giữ lại phong cách này -->
                 <a href="#intro" class="sidebar-link active">~# Giới thiệu</a>
                 <a href="#latest" class="sidebar-link">~# Bài viết mới</a>
-                <a href="#contact" class="sidebar-link">~# Liên hệ</a>
             </div>
-
-            <!-- Bạn có thể xóa phần "MY CHALLENGES" cũ đi rồi -->
         </aside>
 
-        <!-- NỘI DUNG CHÍNH (ĐÃ XÓA CÁC BẢNG CTF CŨ) -->
+        <!-- NỘI DUNG CHÍNH (Đã xóa phần CTF Results) -->
         <main class="main">
-            
-            <!-- Phần giới thiệu thay cho bảng CTF cũ -->
             <div id="intro" style="margin-bottom: 3rem;">
                 <h1 class="section-heading">~# Chào mừng đến với Blue Road</h1>
                 <p style="color: var(--muted); line-height: 1.6; font-size: 15px;">
-                    Trang blog cá nhân về <span style="color: var(--blue);">Blue Team</span> và 
-                    <span style="color: var(--accent);">Cybersecurity</span>. 
-                    <br>Nơi mình share kiến thức, writeup và kinh nghiệm thực chiến.
+                    Blog cá nhân về <span style="color: var(--blue);">Blue Team</span>, 
+                    <span style="color: var(--green);">SOC Analysis</span> và 
+                    <span style="color: var(--accent);">Incident Response</span>.
+                </p>
+            </div>
+
+            <div class="card" style="margin-bottom: 3rem;">
+                <h2 style="font-family: var(--font-mono); font-size: 18px; margin-bottom: 1rem; color: var(--text);">
+                    📚 Về blog này
+                </h2>
+                <p style="color: var(--muted); line-height: 1.7;">
+                    Nơi mình chia sẻ kiến thức về bảo mật phòng thủ, phân tích malware, 
+                    và các writeups từ CTF competitions. Tất cả đều được viết bằng đam mê! 🔥
                 </p>
             </div>
 
             <div id="latest">
                 <h2 class="section-heading">~# Bài viết mới nhất</h2>
                 
-                <!-- Card mẫu cho bài viết -->
                 <div class="card" style="margin-bottom: 1rem;">
                     <h3 style="font-family: var(--font-mono); font-size: 16px; margin-bottom: 0.5rem;">
-                        <a href="#" style="color: var(--text);"> [Draft] Hướng dẫn cài Wazuh SIEM</a>
+                        <a href="#" style="color: var(--text);">📝 Bài viết đầu tiên của tôi</a>
                     </h3>
-                    <p style="color: var(--muted); font-size: 13px;">Đăng ngày 20/05/2024 • Blue Team</p>
+                    <p style="color: var(--muted); font-size: 13px;">Đăng ngày 20/05/2024</p>
                 </div>
-
-                <div class="card" style="margin-bottom: 1rem;">
-                    <h3 style="font-family: var(--font-mono); font-size: 16px; margin-bottom: 0.5rem;">
-                        <a href="#" style="color: var(--text);">📝 [Draft] Phân tích Log Apache cơ bản</a>
-                    </h3>
-                    <p style="color: var(--muted); font-size: 13px;">Đăng ngày 18/05/2024 • Analysis</p>
-                </div>
-
             </div>
-
         </main>
     </div>
 
