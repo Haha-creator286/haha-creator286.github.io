@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Blue Road</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    .about-card { display:flex; align-items:center; gap:1.5rem; margin-bottom:2.5rem; }
+    .avatar { font-size:2.5rem; width:64px; height:64px; display:flex; align-items:center; justify-content:center; background:var(--bg3); border-radius:50%; flex-shrink:0; border:1px solid var(--border); }
+    .about-name { font-size:18px; font-weight:600; color:var(--blue); margin-bottom:6px; }
+    .about-bio { font-size:14px; color:var(--muted); line-height:1.6; }
+    .about-section { margin-bottom:2rem; }
+    .about-sub { font-family:var(--font-mono); font-size:14px; color:var(--accent); margin-bottom:1rem; }
+    .about-text { font-size:14px; color:var(--muted); line-height:1.7; }
+    .skills { display:flex; flex-wrap:wrap; gap:8px; }
+    .skill { background:var(--bg3); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-family:var(--font-mono); font-size:12px; color:var(--muted); }
+    .contacts { display:flex; gap:1rem; flex-wrap:wrap; }
+    .contact-link { color:var(--blue); font-size:14px; font-family:var(--font-mono); }
+    .contact-link:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand">Blue Road</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../playground/index.html">Playground</a></li>
+    <li><a href="../about/index.html" class="active">About</a></li>
+    <li><a href="#" class="flag">Buy Me a Flag 🚩</a></li>
+    <li><button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️</button></li>
+  </ul>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">on this page</div>
+      <a class="sidebar-link" href="#whoami">~# whoami</a>
+      <a class="sidebar-link" href="#skills">~# skills</a>
+      <a class="sidebar-link" href="#contact">~# contact</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">navigate</div>
+      <a class="sidebar-link" href="../index.html">← Home</a>
+      <a class="sidebar-link" href="../playground/index.html">Playground</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <h1 class="section-heading" style="font-size:22px;margin-bottom:2rem">about</h1>
+
+    <div class="about-card card">
+      <div class="avatar">👤</div>
+      <div>
+        <div class="about-name">Blue Road</div>
+        <div class="about-bio">Security researcher & CTF player. Passionate about web exploitation, reverse engineering, and cryptography.</div>
+      </div>
+    </div>
+
+    <div class="about-section" id="whoami">
+      <div class="about-sub">~# whoami</div>
+      <p class="about-text">Tôi là một security researcher với niềm đam mê CTF và penetration testing. Đây là nơi tôi chia sẻ writeups, tools, và những kiến thức tích lũy được.</p>
+    </div>
+
+    <div class="about-section" id="skills">
+      <div class="about-sub">~# skills</div>
+      <div class="skills">
+        <span class="skill">Web Exploitation</span>
+        <span class="skill">Reverse Engineering</span>
+        <span class="skill">Cryptography</span>
+        <span class="skill">Binary Exploitation</span>
+        <span class="skill">OSINT</span>
+        <span class="skill">Forensics</span>
+      </div>
+    </div>
+
+    <div class="about-section" id="contact">
+      <div class="about-sub">~# contact</div>
+      <div class="contacts">
+        <a href="#" class="contact-link">GitHub</a>
+        <a href="#" class="contact-link">Twitter</a>
+        <a href="#" class="contact-link">CTFtime</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../main.js"></script>
+</body>
+</html>

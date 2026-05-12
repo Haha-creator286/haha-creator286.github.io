@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blue Road</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Blue Road</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="playground/index.html">Playground</a></li>
+    <li><a href="about/index.html">About</a></li>
+    <li><a href="#" class="flag">Buy Me a Flag 🚩</a></li>
+    <li><button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️</button></li>
+  </ul>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">on this page</div>
+      <a class="sidebar-link active" href="#2023">~# ls -la 2023</a>
+      <a class="sidebar-link" href="#2022">~# ls -la 2022</a>
+      <a class="sidebar-link" href="#2021">~# ls -la 2021</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">my challenges</div>
+      <a class="sidebar-link" href="ctf/seetf-2023.html">SEETF 2023</a>
+      <a class="sidebar-link" href="ctf/infosecurity-2022.html">The InfoSecurity Challenge 2022</a>
+      <a class="sidebar-link" href="ctf/seetf-2022.html">SEETF 2022</a>
+      <a class="sidebar-link" href="ctf/cyber-league.html">Cyber League Major 1</a>
+      <a class="sidebar-link" href="ctf/standcon-2021.html">STANDCON CTF 2021</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">2023</div>
+      <a class="sidebar-link" href="ctf/defcon-2023.html">DEF CON CTF 2023 Qualifiers</a>
+      <a class="sidebar-link" href="ctf/hxp-ctf.html">hxp CTF</a>
+      <a class="sidebar-link" href="ctf/hacktm-2023.html">HackTM CTF Qualifiers</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section class="ctf-section" id="2023">
+      <h2 class="section-heading">ls -la 2023</h2>
+      <table class="ctf-table">
+        <thead><tr><th>CTF Name</th><th>Type</th><th>Position</th></tr></thead>
+        <tbody>
+          <tr><td><a class="ctf-link" href="ctf/defcon-2023.html">DEF CON CTF 2023 Qualifiers</a></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-gold">🥇</span></td></tr>
+          <tr><td><a class="ctf-link" href="ctf/hxp-ctf.html">hxp CTF 2022</a></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-gold">🥇</span></td></tr>
+          <tr><td><a class="ctf-link" href="ctf/hacktm-2023.html">HackTM CTF Qualifiers</a></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-other">6th</span></td></tr>
+          <tr><td><span class="ctf-name">Insomni'hack Teaser</span></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-other">11th</span></td></tr>
+          <tr><td><span class="ctf-name">IrisCTF 2023</span></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-first">1st 🏆</span></td></tr>
+          <tr><td><span class="ctf-name">TetCTF 2023</span></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-other">4th</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="ctf-section" id="2022">
+      <h2 class="section-heading">ls -la 2022</h2>
+      <table class="ctf-table">
+        <thead><tr><th>CTF Name</th><th>Type</th><th>Position</th></tr></thead>
+        <tbody>
+          <tr><td><a class="ctf-link" href="ctf/infosecurity-2022.html">The InfoSecurity Challenge 2022</a></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-first">1st 🏆</span></td></tr>
+          <tr><td><a class="ctf-link" href="ctf/seetf-2022.html">SEETF 2022</a></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-other">3rd</span></td></tr>
+          <tr><td><a class="ctf-link" href="ctf/hxp-ctf.html">hxp CTF 2022</a></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-gold">🥇</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="ctf-section" id="2021">
+      <h2 class="section-heading">ls -la 2021</h2>
+      <table class="ctf-table">
+        <thead><tr><th>CTF Name</th><th>Type</th><th>Position</th></tr></thead>
+        <tbody>
+          <tr><td><a class="ctf-link" href="ctf/standcon-2021.html">STANDCON CTF 2021</a></td><td><span class="ctf-type">Jeopardy</span></td><td><span class="pos pos-other">2nd</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

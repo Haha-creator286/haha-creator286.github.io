@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Playground — Blue Road</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <style>
+    .pg-desc { color:var(--muted); font-size:14px; margin-bottom:2rem; }
+    .tools-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:3rem; }
+    .tool-card { background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:1.25rem; cursor:pointer; transition:border-color .2s, transform .15s; display:flex; flex-direction:column; gap:6px; }
+    .tool-card:hover { border-color:var(--blue); transform:translateY(-2px); }
+    .tool-tag { font-family:var(--font-mono); font-size:11px; color:var(--accent); background:rgba(247,129,102,.1); border:1px solid rgba(247,129,102,.3); border-radius:4px; padding:2px 8px; display:inline-block; margin-bottom:4px; }
+    .tool-name { font-size:15px; font-weight:600; color:var(--text); }
+    .tool-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+    .tool-arrow { font-size:16px; color:var(--blue); align-self:flex-end; opacity:0; transition:opacity .2s; }
+    .tool-card:hover .tool-arrow { opacity:1; }
+    /* Tool area */
+    .tool-area { background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin-top:2rem; display:none; }
+    .tool-area.active { display:block; }
+    .tool-area h3 { font-family:var(--font-mono); font-size:15px; color:var(--accent); margin-bottom:1rem; }
+    textarea, input[type=text] { width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:6px; padding:.75rem; color:var(--text); font-family:var(--font-mono); font-size:13px; resize:vertical; outline:none; margin-bottom:.75rem; }
+    textarea:focus, input[type=text]:focus { border-color:var(--blue); }
+    .tool-btn { background:var(--blue); color:#fff; border:none; border-radius:6px; padding:6px 16px; font-size:13px; cursor:pointer; margin-right:8px; font-family:var(--font-body); transition:opacity .2s; }
+    .tool-btn:hover { opacity:.85; }
+    .tool-btn.secondary { background:var(--bg3); color:var(--text); border:1px solid var(--border); }
+    .tool-output { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:.75rem; font-family:var(--font-mono); font-size:13px; color:var(--green); min-height:48px; margin-top:.75rem; word-break:break-all; }
+    @media(max-width:520px) { .tools-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand">Blue Road</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../playground/index.html" class="active">Playground</a></li>
+    <li><a href="../about/index.html">About</a></li>
+    <li><a href="#" class="flag">Buy Me a Flag 🚩</a></li>
+    <li><button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀️</button></li>
+  </ul>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">tools</div>
+      <a class="sidebar-link" href="#" onclick="showTool('base64')">Base64</a>
+      <a class="sidebar-link" href="#" onclick="showTool('hex')">Hex Converter</a>
+      <a class="sidebar-link" href="#" onclick="showTool('hash')">Hash Generator</a>
+      <a class="sidebar-link" href="#" onclick="showTool('rot13')">ROT13 / Caesar</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">navigate</div>
+      <a class="sidebar-link" href="../index.html">← Home</a>
+      <a class="sidebar-link" href="../about/index.html">About</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <h1 class="section-heading" style="font-size:22px;margin-bottom:.5rem">playground</h1>
+    <p class="pg-desc">Các tools nhỏ hữu ích cho CTF và security research. Click để dùng ngay.</p>
+
+    <div class="tools-grid">
+      <div class="tool-card" onclick="showTool('base64')">
+        <span class="tool-tag">Encoding</span>
+        <div class="tool-name">Base64 Encoder/Decoder</div>
+        <div class="tool-desc">Encode và decode Base64 nhanh chóng</div>
+        <span class="tool-arrow">→</span>
+      </div>
+      <div class="tool-card" onclick="showTool('hex')">
+        <span class="tool-tag">Converter</span>
+        <div class="tool-name">Hex Converter</div>
+        <div class="tool-desc">Chuyển đổi giữa Hex, ASCII, Binary</div>
+        <span class="tool-arrow">→</span>
+      </div>
+      <div class="tool-card" onclick="showTool('hash')">
+        <span class="tool-tag">Crypto</span>
+        <div class="tool-name">Hash Generator</div>
+        <div class="tool-desc">Tạo MD5, SHA1, SHA256 hash</div>
+        <span class="tool-arrow">→</span>
+      </div>
+      <div class="tool-card" onclick="showTool('rot13')">
+        <span class="tool-tag">Crypto</span>
+        <div class="tool-name">ROT13 / Caesar Cipher</div>
+        <div class="tool-desc">Giải mã các cipher cơ bản trong CTF</div>
+        <span class="tool-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- BASE64 -->
+    <div class="tool-area" id="tool-base64">
+      <h3>~# base64</h3>
+      <textarea id="b64-input" rows="3" placeholder="Nhập text..."></textarea>
+      <div>
+        <button class="tool-btn" onclick="b64encode()">Encode</button>
+        <button class="tool-btn secondary" onclick="b64decode()">Decode</button>
+      </div>
+      <div class="tool-output" id="b64-output">// output sẽ hiện ở đây</div>
+    </div>
+
+    <!-- HEX -->
+    <div class="tool-area" id="tool-hex">
+      <h3>~# hex converter</h3>
+      <textarea id="hex-input" rows="3" placeholder="Nhập text hoặc hex (vd: 48 65 6c 6c 6f)..."></textarea>
+      <div>
+        <button class="tool-btn" onclick="toHex()">Text → Hex</button>
+        <button class="tool-btn secondary" onclick="fromHex()">Hex → Text</button>
+      </div>
+      <div class="tool-output" id="hex-output">// output sẽ hiện ở đây</div>
+    </div>
+
+    <!-- HASH -->
+    <div class="tool-area" id="tool-hash">
+      <h3>~# hash generator</h3>
+      <textarea id="hash-input" rows="3" placeholder="Nhập text cần hash..."></textarea>
+      <div>
+        <button class="tool-btn" onclick="genHash('SHA-1')">SHA-1</button>
+        <button class="tool-btn" onclick="genHash('SHA-256')">SHA-256</button>
+        <button class="tool-btn secondary" onclick="genHash('SHA-512')">SHA-512</button>
+      </div>
+      <div class="tool-output" id="hash-output">// output sẽ hiện ở đây</div>
+    </div>
+
+    <!-- ROT13 -->
+    <div class="tool-area" id="tool-rot13">
+      <h3>~# rot13 / caesar</h3>
+      <textarea id="rot-input" rows="3" placeholder="Nhập text..."></textarea>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:.75rem">
+        <label style="font-size:13px;color:var(--muted)">Shift:</label>
+        <input type="text" id="rot-shift" value="13" style="width:60px;margin:0"/>
+      </div>
+      <div>
+        <button class="tool-btn" onclick="rotCipher()">Encode / Decode</button>
+      </div>
+      <div class="tool-output" id="rot-output">// output sẽ hiện ở đây</div>
+    </div>
+  </main>
+</div>
+
+<script src="../main.js"></script>
+<script>
+function showTool(id) {
+  document.querySelectorAll('.tool-area').forEach(el => el.classList.remove('active'));
+  const el = document.getElementById('tool-' + id);
+  if (el) { el.classList.add('active'); el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+}
+
+function b64encode() {
+  try { document.getElementById('b64-output').textContent = btoa(unescape(encodeURIComponent(document.getElementById('b64-input').value))); }
+  catch(e) { document.getElementById('b64-output').textContent = 'Error: ' + e.message; }
+}
+function b64decode() {
+  try { document.getElementById('b64-output').textContent = decodeURIComponent(escape(atob(document.getElementById('b64-input').value))); }
+  catch(e) { document.getElementById('b64-output').textContent = 'Error: invalid base64'; }
+}
+
+function toHex() {
+  const t = document.getElementById('hex-input').value;
+  document.getElementById('hex-output').textContent = Array.from(t).map(c => c.charCodeAt(0).toString(16).padStart(2,'0')).join(' ');
+}
+function fromHex() {
+  try {
+    const h = document.getElementById('hex-input').value.replace(/\s/g,'');
+    document.getElementById('hex-output').textContent = h.match(/.{1,2}/g).map(b => String.fromCharCode(parseInt(b,16))).join('');
+  } catch(e) { document.getElementById('hex-output').textContent = 'Error: invalid hex'; }
+}
+
+async function genHash(algo) {
+  const text = document.getElementById('hash-input').value;
+  const buf = await crypto.subtle.digest(algo, new TextEncoder().encode(text));
+  document.getElementById('hash-output').textContent = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+function rotCipher() {
+  const text = document.getElementById('rot-input').value;
+  const shift = parseInt(document.getElementById('rot-shift').value) || 13;
+  const result = text.replace(/[a-zA-Z]/g, c => {
+    const base = c <= 'Z' ? 65 : 97;
+    return String.fromCharCode((c.charCodeAt(0) - base + shift) % 26 + base);
+  });
+  document.getElementById('rot-output').textContent = result;
+}
+</script>
+</body>
+</html>
