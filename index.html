@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Road - Security Blog</title>
+    <title>Blue Road — Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- TOP NAVIGATION (GIỮ NGUYÊN) -->
     <nav>
         <div class="nav-brand">Blue Road</div>
         <ul class="nav-links">
@@ -18,62 +19,56 @@
         </ul>
     </nav>
 
-    <div class="main" style="max-width: 800px; margin: 0 auto; padding: 3rem 2rem;">
-        <h1 class="section-heading" style="font-size: 32px; margin-bottom: 1rem;">
-            ~# Chào mừng đến với Blue Road
-        </h1>
+    <!-- LAYOUT CHÍNH (SIDEBAR + CONTENT) -->
+    <div class="layout">
         
-        <p style="color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 2rem;">
-            Blog cá nhân về <strong style="color: var(--blue);">Blue Team</strong>, 
-            <strong style="color: var(--green);">SOC Analysis</strong> và 
-            <strong style="color: var(--accent);">Incident Response</strong>.
-        </p>
-
-        <div class="card" style="margin-bottom: 2rem;">
-            <h2 style="font-family: var(--font-mono); font-size: 18px; margin-bottom: 1rem; color: var(--text);">
-                📚 Về blog này
-            </h2>
-            <p style="color: var(--muted); line-height: 1.7;">
-                Nơi mình chia sẻ kiến thức về bảo mật phòng thủ, phân tích malware, 
-                và các writeups từ CTF competitions. Tất cả đều được viết bằng đam mê! 🔥
-            </p>
-        </div>
-
-        <h2 class="section-heading">~# Bài viết mới nhất</h2>
-        
-        <div id="posts-container">
-            <!-- Các bài viết sẽ hiện ở đây -->
-            <div class="card" style="margin-bottom: 1rem;">
-                <h3 style="margin-bottom: 0.5rem;">
-                    <a href="#" class="ctf-link">📝 Bài viết đầu tiên của tôi</a>
-                </h3>
-                <p style="color: var(--muted); font-size: 13px;">Đăng ngày 20/05/2024</p>
+        <!-- SIDEBAR (GIỮ PHONG CÁCH "ON THIS PAGE") -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-label">ON THIS PAGE</div>
+                <!-- Đây là khu vực bạn muốn giữ lại phong cách này -->
+                <a href="#intro" class="sidebar-link active">~# Giới thiệu</a>
+                <a href="#latest" class="sidebar-link">~# Bài viết mới</a>
+                <a href="#contact" class="sidebar-link">~# Liên hệ</a>
             </div>
-        </div>
 
-        <h2 class="section-heading" style="margin-top: 3rem;">~# CTF Results</h2>
-        
-        <table class="ctf-table">
-            <thead>
-                <tr>
-                    <th>CTF Name</th>
-                    <th>Type</th>
-                    <th>Position</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="ctf/seetf-2023.html" class="ctf-link">SEETF 2023</a></td>
-                    <td class="ctf-type">Jeopardy</td>
-                    <td class="pos pos-gold">🥇 1st</td>
-                </tr>
-                <tr>
-                    <td><a href="ctf/infosecurity-2022.html" class="ctf-link">The InfoSecurity Challenge 2022</a></td>
-                    <td class="ctf-type">Jeopardy</td>
-                    <td class="pos pos-first">🏆 Winner</td>
-                </tr>
-            </tbody>
-        </table>
+            <!-- Bạn có thể xóa phần "MY CHALLENGES" cũ đi rồi -->
+        </aside>
+
+        <!-- NỘI DUNG CHÍNH (ĐÃ XÓA CÁC BẢNG CTF CŨ) -->
+        <main class="main">
+            
+            <!-- Phần giới thiệu thay cho bảng CTF cũ -->
+            <div id="intro" style="margin-bottom: 3rem;">
+                <h1 class="section-heading">~# Chào mừng đến với Blue Road</h1>
+                <p style="color: var(--muted); line-height: 1.6; font-size: 15px;">
+                    Trang blog cá nhân về <span style="color: var(--blue);">Blue Team</span> và 
+                    <span style="color: var(--accent);">Cybersecurity</span>. 
+                    <br>Nơi mình share kiến thức, writeup và kinh nghiệm thực chiến.
+                </p>
+            </div>
+
+            <div id="latest">
+                <h2 class="section-heading">~# Bài viết mới nhất</h2>
+                
+                <!-- Card mẫu cho bài viết -->
+                <div class="card" style="margin-bottom: 1rem;">
+                    <h3 style="font-family: var(--font-mono); font-size: 16px; margin-bottom: 0.5rem;">
+                        <a href="#" style="color: var(--text);"> [Draft] Hướng dẫn cài Wazuh SIEM</a>
+                    </h3>
+                    <p style="color: var(--muted); font-size: 13px;">Đăng ngày 20/05/2024 • Blue Team</p>
+                </div>
+
+                <div class="card" style="margin-bottom: 1rem;">
+                    <h3 style="font-family: var(--font-mono); font-size: 16px; margin-bottom: 0.5rem;">
+                        <a href="#" style="color: var(--text);">📝 [Draft] Phân tích Log Apache cơ bản</a>
+                    </h3>
+                    <p style="color: var(--muted); font-size: 13px;">Đăng ngày 18/05/2024 • Analysis</p>
+                </div>
+
+            </div>
+
+        </main>
     </div>
 
     <script src="main.js"></script>
